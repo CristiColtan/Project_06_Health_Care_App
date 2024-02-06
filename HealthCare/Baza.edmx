@@ -1,0 +1,830 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="HealthCareModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Analize">
+          <Key>
+            <PropertyRef Name="AnalizaID" />
+          </Key>
+          <Property Name="Denumire" Type="nvarchar" MaxLength="20" />
+          <Property Name="AnalizaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Parametrii" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Analize_pacienti">
+          <Key>
+            <PropertyRef Name="Analize_pacientiID" />
+          </Key>
+          <Property Name="Analize_pacientiID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Pacient_ID" Type="int" />
+          <Property Name="Analiza_ID" Type="int" />
+          <Property Name="Rezultat" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Diagnostice">
+          <Key>
+            <PropertyRef Name="DiagnosticID" />
+          </Key>
+          <Property Name="DiagnosticID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Denumire" Type="nvarchar" MaxLength="30" />
+          <Property Name="Tip" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Diagnostice_pacienti">
+          <Key>
+            <PropertyRef Name="Diagnostice_pacientiID" />
+          </Key>
+          <Property Name="Diagnostice_pacientiID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Pacienti_ID" Type="int" />
+          <Property Name="Diagnostic_ID" Type="int" />
+          <Property Name="DataDiagnostic" Type="date" />
+        </EntityType>
+        <EntityType Name="Disponibilitati">
+          <Key>
+            <PropertyRef Name="DisponibilitateID" />
+          </Key>
+          <Property Name="DisponibilitateID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DataTimp" Type="nvarchar" MaxLength="30" />
+          <Property Name="Doctor" Type="int" />
+        </EntityType>
+        <EntityType Name="Medicamente">
+          <Key>
+            <PropertyRef Name="MedicamentID" />
+          </Key>
+          <Property Name="MedicamentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Denumire" Type="nvarchar" MaxLength="30" />
+          <Property Name="Gramaj" Type="nvarchar" MaxLength="30" />
+          <Property Name="Cantitate" Type="int" />
+        </EntityType>
+        <EntityType Name="Medicamente_pacienti">
+          <Key>
+            <PropertyRef Name="Medicamente_pacientiID" />
+          </Key>
+          <Property Name="Medicamente_pacientiID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Pacienti_ID" Type="int" />
+          <Property Name="Medicament_ID" Type="int" />
+          <Property Name="DataIncepere" Type="date" />
+          <Property Name="DataIncheiere" Type="date" />
+        </EntityType>
+        <EntityType Name="Medici">
+          <Key>
+            <PropertyRef Name="MedicID" />
+          </Key>
+          <Property Name="MedicID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="Nume" Type="nvarchar" MaxLength="30" />
+          <Property Name="Prenume" Type="nvarchar" MaxLength="30" />
+          <Property Name="Specializare" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Programari">
+          <Key>
+            <PropertyRef Name="ProgramareID" />
+          </Key>
+          <Property Name="ProgramareID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MedicID" Type="int" />
+          <Property Name="PacientID" Type="int" />
+          <Property Name="DataProgramare" Type="nvarchar" MaxLength="20" />
+          <Property Name="OraProgramare" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Utilizatori">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nume" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Prenume" Type="nvarchar" MaxLength="20" />
+          <Property Name="CNP" Type="nvarchar" MaxLength="13" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Parola" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="DataNasterii" Type="nvarchar" MaxLength="20" />
+          <Property Name="Doctor" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Analize_p__Anali__6383C8BA">
+          <End Role="Analize" Type="Self.Analize" Multiplicity="0..1" />
+          <End Role="Analize_pacienti" Type="Self.Analize_pacienti" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Analize">
+              <PropertyRef Name="AnalizaID" />
+            </Principal>
+            <Dependent Role="Analize_pacienti">
+              <PropertyRef Name="Analiza_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Analize_p__Pacie__628FA481">
+          <End Role="Utilizatori" Type="Self.Utilizatori" Multiplicity="0..1" />
+          <End Role="Analize_pacienti" Type="Self.Analize_pacienti" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizatori">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Analize_pacienti">
+              <PropertyRef Name="Pacient_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Diagnosti__Diagn__6B24EA82">
+          <End Role="Diagnostice" Type="Self.Diagnostice" Multiplicity="0..1" />
+          <End Role="Diagnostice_pacienti" Type="Self.Diagnostice_pacienti" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Diagnostice">
+              <PropertyRef Name="DiagnosticID" />
+            </Principal>
+            <Dependent Role="Diagnostice_pacienti">
+              <PropertyRef Name="Diagnostic_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Diagnosti__Pacie__6A30C649">
+          <End Role="Utilizatori" Type="Self.Utilizatori" Multiplicity="0..1" />
+          <End Role="Diagnostice_pacienti" Type="Self.Diagnostice_pacienti" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizatori">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Diagnostice_pacienti">
+              <PropertyRef Name="Pacienti_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Disponibi__Docto__4CA06362">
+          <End Role="Utilizatori" Type="Self.Utilizatori" Multiplicity="0..1" />
+          <End Role="Disponibilitati" Type="Self.Disponibilitati" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizatori">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Disponibilitati">
+              <PropertyRef Name="Doctor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Medicamen__Medic__6754599E">
+          <End Role="Medicamente" Type="Self.Medicamente" Multiplicity="0..1" />
+          <End Role="Medicamente_pacienti" Type="Self.Medicamente_pacienti" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medicamente">
+              <PropertyRef Name="MedicamentID" />
+            </Principal>
+            <Dependent Role="Medicamente_pacienti">
+              <PropertyRef Name="Medicament_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Medicamen__Pacie__66603565">
+          <End Role="Utilizatori" Type="Self.Utilizatori" Multiplicity="0..1" />
+          <End Role="Medicamente_pacienti" Type="Self.Medicamente_pacienti" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizatori">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Medicamente_pacienti">
+              <PropertyRef Name="Pacienti_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Medici__UserID__02FC7413">
+          <End Role="Utilizatori" Type="Self.Utilizatori" Multiplicity="0..1" />
+          <End Role="Medici" Type="Self.Medici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizatori">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Medici">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Programar__Medic__6E01572D">
+          <End Role="Utilizatori" Type="Self.Utilizatori" Multiplicity="0..1" />
+          <End Role="Programari" Type="Self.Programari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizatori">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Programari">
+              <PropertyRef Name="MedicID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Programar__Pacie__6EF57B66">
+          <End Role="Utilizatori" Type="Self.Utilizatori" Multiplicity="0..1" />
+          <End Role="Programari" Type="Self.Programari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizatori">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Programari">
+              <PropertyRef Name="PacientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="HealthCareModelStoreContainer">
+          <EntitySet Name="Analize" EntityType="Self.Analize" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Analize_pacienti" EntityType="Self.Analize_pacienti" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Diagnostice" EntityType="Self.Diagnostice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Diagnostice_pacienti" EntityType="Self.Diagnostice_pacienti" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Disponibilitati" EntityType="Self.Disponibilitati" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Medicamente" EntityType="Self.Medicamente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Medicamente_pacienti" EntityType="Self.Medicamente_pacienti" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Medici" EntityType="Self.Medici" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Programari" EntityType="Self.Programari" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Utilizatori" EntityType="Self.Utilizatori" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Analize_p__Anali__6383C8BA" Association="Self.FK__Analize_p__Anali__6383C8BA">
+            <End Role="Analize" EntitySet="Analize" />
+            <End Role="Analize_pacienti" EntitySet="Analize_pacienti" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Analize_p__Pacie__628FA481" Association="Self.FK__Analize_p__Pacie__628FA481">
+            <End Role="Utilizatori" EntitySet="Utilizatori" />
+            <End Role="Analize_pacienti" EntitySet="Analize_pacienti" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Diagnosti__Diagn__6B24EA82" Association="Self.FK__Diagnosti__Diagn__6B24EA82">
+            <End Role="Diagnostice" EntitySet="Diagnostice" />
+            <End Role="Diagnostice_pacienti" EntitySet="Diagnostice_pacienti" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Diagnosti__Pacie__6A30C649" Association="Self.FK__Diagnosti__Pacie__6A30C649">
+            <End Role="Utilizatori" EntitySet="Utilizatori" />
+            <End Role="Diagnostice_pacienti" EntitySet="Diagnostice_pacienti" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Disponibi__Docto__4CA06362" Association="Self.FK__Disponibi__Docto__4CA06362">
+            <End Role="Utilizatori" EntitySet="Utilizatori" />
+            <End Role="Disponibilitati" EntitySet="Disponibilitati" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Medicamen__Medic__6754599E" Association="Self.FK__Medicamen__Medic__6754599E">
+            <End Role="Medicamente" EntitySet="Medicamente" />
+            <End Role="Medicamente_pacienti" EntitySet="Medicamente_pacienti" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Medicamen__Pacie__66603565" Association="Self.FK__Medicamen__Pacie__66603565">
+            <End Role="Utilizatori" EntitySet="Utilizatori" />
+            <End Role="Medicamente_pacienti" EntitySet="Medicamente_pacienti" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Medici__UserID__02FC7413" Association="Self.FK__Medici__UserID__02FC7413">
+            <End Role="Utilizatori" EntitySet="Utilizatori" />
+            <End Role="Medici" EntitySet="Medici" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Programar__Medic__6E01572D" Association="Self.FK__Programar__Medic__6E01572D">
+            <End Role="Utilizatori" EntitySet="Utilizatori" />
+            <End Role="Programari" EntitySet="Programari" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Programar__Pacie__6EF57B66" Association="Self.FK__Programar__Pacie__6EF57B66">
+            <End Role="Utilizatori" EntitySet="Utilizatori" />
+            <End Role="Programari" EntitySet="Programari" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HealthCareModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Analize">
+          <Key>
+            <PropertyRef Name="AnalizaID" />
+          </Key>
+          <Property Name="Denumire" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="AnalizaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Parametrii" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Analize_pacienti" Relationship="Self.FK__Analize_p__Anali__6383C8BA" FromRole="Analize" ToRole="Analize_pacienti" />
+        </EntityType>
+        <EntityType Name="Analize_pacienti">
+          <Key>
+            <PropertyRef Name="Analize_pacientiID" />
+          </Key>
+          <Property Name="Analize_pacientiID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Pacient_ID" Type="Int32" />
+          <Property Name="Analiza_ID" Type="Int32" />
+          <Property Name="Rezultat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Analize" Relationship="Self.FK__Analize_p__Anali__6383C8BA" FromRole="Analize_pacienti" ToRole="Analize" />
+          <NavigationProperty Name="Utilizatori" Relationship="Self.FK__Analize_p__Pacie__628FA481" FromRole="Analize_pacienti" ToRole="Utilizatori" />
+        </EntityType>
+        <EntityType Name="Diagnostice">
+          <Key>
+            <PropertyRef Name="DiagnosticID" />
+          </Key>
+          <Property Name="DiagnosticID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Denumire" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Tip" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Diagnostice_pacienti" Relationship="Self.FK__Diagnosti__Diagn__6B24EA82" FromRole="Diagnostice" ToRole="Diagnostice_pacienti" />
+        </EntityType>
+        <EntityType Name="Diagnostice_pacienti">
+          <Key>
+            <PropertyRef Name="Diagnostice_pacientiID" />
+          </Key>
+          <Property Name="Diagnostice_pacientiID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Pacienti_ID" Type="Int32" />
+          <Property Name="Diagnostic_ID" Type="Int32" />
+          <Property Name="DataDiagnostic" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Diagnostice" Relationship="Self.FK__Diagnosti__Diagn__6B24EA82" FromRole="Diagnostice_pacienti" ToRole="Diagnostice" />
+          <NavigationProperty Name="Utilizatori" Relationship="Self.FK__Diagnosti__Pacie__6A30C649" FromRole="Diagnostice_pacienti" ToRole="Utilizatori" />
+        </EntityType>
+        <EntityType Name="Disponibilitati">
+          <Key>
+            <PropertyRef Name="DisponibilitateID" />
+          </Key>
+          <Property Name="DisponibilitateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DataTimp" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Doctor" Type="Int32" />
+          <NavigationProperty Name="Utilizatori" Relationship="Self.FK__Disponibi__Docto__4CA06362" FromRole="Disponibilitati" ToRole="Utilizatori" />
+        </EntityType>
+        <EntityType Name="Medicamente">
+          <Key>
+            <PropertyRef Name="MedicamentID" />
+          </Key>
+          <Property Name="MedicamentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Denumire" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Gramaj" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Cantitate" Type="Int32" />
+          <NavigationProperty Name="Medicamente_pacienti" Relationship="Self.FK__Medicamen__Medic__6754599E" FromRole="Medicamente" ToRole="Medicamente_pacienti" />
+        </EntityType>
+        <EntityType Name="Medicamente_pacienti">
+          <Key>
+            <PropertyRef Name="Medicamente_pacientiID" />
+          </Key>
+          <Property Name="Medicamente_pacientiID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Pacienti_ID" Type="Int32" />
+          <Property Name="Medicament_ID" Type="Int32" />
+          <Property Name="DataIncepere" Type="DateTime" Precision="0" />
+          <Property Name="DataIncheiere" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Medicamente" Relationship="Self.FK__Medicamen__Medic__6754599E" FromRole="Medicamente_pacienti" ToRole="Medicamente" />
+          <NavigationProperty Name="Utilizatori" Relationship="Self.FK__Medicamen__Pacie__66603565" FromRole="Medicamente_pacienti" ToRole="Utilizatori" />
+        </EntityType>
+        <EntityType Name="Medici">
+          <Key>
+            <PropertyRef Name="MedicID" />
+          </Key>
+          <Property Name="MedicID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="Nume" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Prenume" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Specializare" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Utilizatori" Relationship="Self.FK__Medici__UserID__02FC7413" FromRole="Medici" ToRole="Utilizatori" />
+        </EntityType>
+        <EntityType Name="Programari">
+          <Key>
+            <PropertyRef Name="ProgramareID" />
+          </Key>
+          <Property Name="ProgramareID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MedicID" Type="Int32" />
+          <Property Name="PacientID" Type="Int32" />
+          <Property Name="DataProgramare" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="OraProgramare" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Utilizatori" Relationship="Self.FK__Programar__Medic__6E01572D" FromRole="Programari" ToRole="Utilizatori" />
+          <NavigationProperty Name="Utilizatori1" Relationship="Self.FK__Programar__Pacie__6EF57B66" FromRole="Programari" ToRole="Utilizatori" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Utilizatori">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nume" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Prenume" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CNP" Type="String" MaxLength="13" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Parola" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DataNasterii" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Doctor" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Analize_pacienti" Relationship="Self.FK__Analize_p__Pacie__628FA481" FromRole="Utilizatori" ToRole="Analize_pacienti" />
+          <NavigationProperty Name="Diagnostice_pacienti" Relationship="Self.FK__Diagnosti__Pacie__6A30C649" FromRole="Utilizatori" ToRole="Diagnostice_pacienti" />
+          <NavigationProperty Name="Disponibilitatis" Relationship="Self.FK__Disponibi__Docto__4CA06362" FromRole="Utilizatori" ToRole="Disponibilitati" />
+          <NavigationProperty Name="Medicamente_pacienti" Relationship="Self.FK__Medicamen__Pacie__66603565" FromRole="Utilizatori" ToRole="Medicamente_pacienti" />
+          <NavigationProperty Name="Medicis" Relationship="Self.FK__Medici__UserID__02FC7413" FromRole="Utilizatori" ToRole="Medici" />
+          <NavigationProperty Name="Programaris" Relationship="Self.FK__Programar__Medic__6E01572D" FromRole="Utilizatori" ToRole="Programari" />
+          <NavigationProperty Name="Programaris1" Relationship="Self.FK__Programar__Pacie__6EF57B66" FromRole="Utilizatori" ToRole="Programari" />
+        </EntityType>
+        <Association Name="FK__Analize_p__Anali__6383C8BA">
+          <End Role="Analize" Type="Self.Analize" Multiplicity="0..1" />
+          <End Role="Analize_pacienti" Type="Self.Analize_pacienti" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Analize">
+              <PropertyRef Name="AnalizaID" />
+            </Principal>
+            <Dependent Role="Analize_pacienti">
+              <PropertyRef Name="Analiza_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Analize_p__Pacie__628FA481">
+          <End Role="Utilizatori" Type="Self.Utilizatori" Multiplicity="0..1" />
+          <End Role="Analize_pacienti" Type="Self.Analize_pacienti" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizatori">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Analize_pacienti">
+              <PropertyRef Name="Pacient_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Diagnosti__Diagn__6B24EA82">
+          <End Role="Diagnostice" Type="Self.Diagnostice" Multiplicity="0..1" />
+          <End Role="Diagnostice_pacienti" Type="Self.Diagnostice_pacienti" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Diagnostice">
+              <PropertyRef Name="DiagnosticID" />
+            </Principal>
+            <Dependent Role="Diagnostice_pacienti">
+              <PropertyRef Name="Diagnostic_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Diagnosti__Pacie__6A30C649">
+          <End Role="Utilizatori" Type="Self.Utilizatori" Multiplicity="0..1" />
+          <End Role="Diagnostice_pacienti" Type="Self.Diagnostice_pacienti" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizatori">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Diagnostice_pacienti">
+              <PropertyRef Name="Pacienti_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Disponibi__Docto__4CA06362">
+          <End Role="Utilizatori" Type="Self.Utilizatori" Multiplicity="0..1" />
+          <End Role="Disponibilitati" Type="Self.Disponibilitati" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizatori">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Disponibilitati">
+              <PropertyRef Name="Doctor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Medicamen__Medic__6754599E">
+          <End Role="Medicamente" Type="Self.Medicamente" Multiplicity="0..1" />
+          <End Role="Medicamente_pacienti" Type="Self.Medicamente_pacienti" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medicamente">
+              <PropertyRef Name="MedicamentID" />
+            </Principal>
+            <Dependent Role="Medicamente_pacienti">
+              <PropertyRef Name="Medicament_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Medicamen__Pacie__66603565">
+          <End Role="Utilizatori" Type="Self.Utilizatori" Multiplicity="0..1" />
+          <End Role="Medicamente_pacienti" Type="Self.Medicamente_pacienti" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizatori">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Medicamente_pacienti">
+              <PropertyRef Name="Pacienti_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Medici__UserID__02FC7413">
+          <End Role="Utilizatori" Type="Self.Utilizatori" Multiplicity="0..1" />
+          <End Role="Medici" Type="Self.Medici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizatori">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Medici">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Programar__Medic__6E01572D">
+          <End Role="Utilizatori" Type="Self.Utilizatori" Multiplicity="0..1" />
+          <End Role="Programari" Type="Self.Programari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizatori">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Programari">
+              <PropertyRef Name="MedicID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Programar__Pacie__6EF57B66">
+          <End Role="Utilizatori" Type="Self.Utilizatori" Multiplicity="0..1" />
+          <End Role="Programari" Type="Self.Programari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilizatori">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Programari">
+              <PropertyRef Name="PacientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HealthCareEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Analizes" EntityType="Self.Analize" />
+          <EntitySet Name="Analize_pacienti" EntityType="Self.Analize_pacienti" />
+          <EntitySet Name="Diagnostices" EntityType="Self.Diagnostice" />
+          <EntitySet Name="Diagnostice_pacienti" EntityType="Self.Diagnostice_pacienti" />
+          <EntitySet Name="Disponibilitatis" EntityType="Self.Disponibilitati" />
+          <EntitySet Name="Medicamentes" EntityType="Self.Medicamente" />
+          <EntitySet Name="Medicamente_pacienti" EntityType="Self.Medicamente_pacienti" />
+          <EntitySet Name="Medicis" EntityType="Self.Medici" />
+          <EntitySet Name="Programaris" EntityType="Self.Programari" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Utilizatoris" EntityType="Self.Utilizatori" />
+          <AssociationSet Name="FK__Analize_p__Anali__6383C8BA" Association="Self.FK__Analize_p__Anali__6383C8BA">
+            <End Role="Analize" EntitySet="Analizes" />
+            <End Role="Analize_pacienti" EntitySet="Analize_pacienti" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Analize_p__Pacie__628FA481" Association="Self.FK__Analize_p__Pacie__628FA481">
+            <End Role="Utilizatori" EntitySet="Utilizatoris" />
+            <End Role="Analize_pacienti" EntitySet="Analize_pacienti" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Diagnosti__Diagn__6B24EA82" Association="Self.FK__Diagnosti__Diagn__6B24EA82">
+            <End Role="Diagnostice" EntitySet="Diagnostices" />
+            <End Role="Diagnostice_pacienti" EntitySet="Diagnostice_pacienti" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Diagnosti__Pacie__6A30C649" Association="Self.FK__Diagnosti__Pacie__6A30C649">
+            <End Role="Utilizatori" EntitySet="Utilizatoris" />
+            <End Role="Diagnostice_pacienti" EntitySet="Diagnostice_pacienti" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Disponibi__Docto__4CA06362" Association="Self.FK__Disponibi__Docto__4CA06362">
+            <End Role="Utilizatori" EntitySet="Utilizatoris" />
+            <End Role="Disponibilitati" EntitySet="Disponibilitatis" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Medicamen__Medic__6754599E" Association="Self.FK__Medicamen__Medic__6754599E">
+            <End Role="Medicamente" EntitySet="Medicamentes" />
+            <End Role="Medicamente_pacienti" EntitySet="Medicamente_pacienti" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Medicamen__Pacie__66603565" Association="Self.FK__Medicamen__Pacie__66603565">
+            <End Role="Utilizatori" EntitySet="Utilizatoris" />
+            <End Role="Medicamente_pacienti" EntitySet="Medicamente_pacienti" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Medici__UserID__02FC7413" Association="Self.FK__Medici__UserID__02FC7413">
+            <End Role="Utilizatori" EntitySet="Utilizatoris" />
+            <End Role="Medici" EntitySet="Medicis" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Programar__Medic__6E01572D" Association="Self.FK__Programar__Medic__6E01572D">
+            <End Role="Utilizatori" EntitySet="Utilizatoris" />
+            <End Role="Programari" EntitySet="Programaris" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Programar__Pacie__6EF57B66" Association="Self.FK__Programar__Pacie__6EF57B66">
+            <End Role="Utilizatori" EntitySet="Utilizatoris" />
+            <End Role="Programari" EntitySet="Programaris" />
+          </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(HealthCareModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(HealthCareModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+        </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HealthCareModelStoreContainer" CdmEntityContainer="HealthCareEntities">
+          <EntitySetMapping Name="Analizes">
+            <EntityTypeMapping TypeName="HealthCareModel.Analize">
+              <MappingFragment StoreEntitySet="Analize">
+                <ScalarProperty Name="Denumire" ColumnName="Denumire" />
+                <ScalarProperty Name="AnalizaID" ColumnName="AnalizaID" />
+                <ScalarProperty Name="Parametrii" ColumnName="Parametrii" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Analize_pacienti">
+            <EntityTypeMapping TypeName="HealthCareModel.Analize_pacienti">
+              <MappingFragment StoreEntitySet="Analize_pacienti">
+                <ScalarProperty Name="Analize_pacientiID" ColumnName="Analize_pacientiID" />
+                <ScalarProperty Name="Pacient_ID" ColumnName="Pacient_ID" />
+                <ScalarProperty Name="Analiza_ID" ColumnName="Analiza_ID" />
+                <ScalarProperty Name="Rezultat" ColumnName="Rezultat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Diagnostices">
+            <EntityTypeMapping TypeName="HealthCareModel.Diagnostice">
+              <MappingFragment StoreEntitySet="Diagnostice">
+                <ScalarProperty Name="DiagnosticID" ColumnName="DiagnosticID" />
+                <ScalarProperty Name="Denumire" ColumnName="Denumire" />
+                <ScalarProperty Name="Tip" ColumnName="Tip" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Diagnostice_pacienti">
+            <EntityTypeMapping TypeName="HealthCareModel.Diagnostice_pacienti">
+              <MappingFragment StoreEntitySet="Diagnostice_pacienti">
+                <ScalarProperty Name="Diagnostice_pacientiID" ColumnName="Diagnostice_pacientiID" />
+                <ScalarProperty Name="Pacienti_ID" ColumnName="Pacienti_ID" />
+                <ScalarProperty Name="Diagnostic_ID" ColumnName="Diagnostic_ID" />
+                <ScalarProperty Name="DataDiagnostic" ColumnName="DataDiagnostic" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Disponibilitatis">
+            <EntityTypeMapping TypeName="HealthCareModel.Disponibilitati">
+              <MappingFragment StoreEntitySet="Disponibilitati">
+                <ScalarProperty Name="DisponibilitateID" ColumnName="DisponibilitateID" />
+                <ScalarProperty Name="DataTimp" ColumnName="DataTimp" />
+                <ScalarProperty Name="Doctor" ColumnName="Doctor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Medicamentes">
+            <EntityTypeMapping TypeName="HealthCareModel.Medicamente">
+              <MappingFragment StoreEntitySet="Medicamente">
+                <ScalarProperty Name="MedicamentID" ColumnName="MedicamentID" />
+                <ScalarProperty Name="Denumire" ColumnName="Denumire" />
+                <ScalarProperty Name="Gramaj" ColumnName="Gramaj" />
+                <ScalarProperty Name="Cantitate" ColumnName="Cantitate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Medicamente_pacienti">
+            <EntityTypeMapping TypeName="HealthCareModel.Medicamente_pacienti">
+              <MappingFragment StoreEntitySet="Medicamente_pacienti">
+                <ScalarProperty Name="Medicamente_pacientiID" ColumnName="Medicamente_pacientiID" />
+                <ScalarProperty Name="Pacienti_ID" ColumnName="Pacienti_ID" />
+                <ScalarProperty Name="Medicament_ID" ColumnName="Medicament_ID" />
+                <ScalarProperty Name="DataIncepere" ColumnName="DataIncepere" />
+                <ScalarProperty Name="DataIncheiere" ColumnName="DataIncheiere" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Medicis">
+            <EntityTypeMapping TypeName="HealthCareModel.Medici">
+              <MappingFragment StoreEntitySet="Medici">
+                <ScalarProperty Name="MedicID" ColumnName="MedicID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Nume" ColumnName="Nume" />
+                <ScalarProperty Name="Prenume" ColumnName="Prenume" />
+                <ScalarProperty Name="Specializare" ColumnName="Specializare" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Programaris">
+            <EntityTypeMapping TypeName="HealthCareModel.Programari">
+              <MappingFragment StoreEntitySet="Programari">
+                <ScalarProperty Name="ProgramareID" ColumnName="ProgramareID" />
+                <ScalarProperty Name="MedicID" ColumnName="MedicID" />
+                <ScalarProperty Name="PacientID" ColumnName="PacientID" />
+                <ScalarProperty Name="DataProgramare" ColumnName="DataProgramare" />
+                <ScalarProperty Name="OraProgramare" ColumnName="OraProgramare" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="HealthCareModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Utilizatoris">
+            <EntityTypeMapping TypeName="HealthCareModel.Utilizatori">
+              <MappingFragment StoreEntitySet="Utilizatori">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Nume" ColumnName="Nume" />
+                <ScalarProperty Name="Prenume" ColumnName="Prenume" />
+                <ScalarProperty Name="CNP" ColumnName="CNP" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Parola" ColumnName="Parola" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="DataNasterii" ColumnName="DataNasterii" />
+                <ScalarProperty Name="Doctor" ColumnName="Doctor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="HealthCareModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="HealthCareModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="HealthCareModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="HealthCareModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HealthCareModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="HealthCareModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="HealthCareModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="HealthCareModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="HealthCareModel.Store.sp_upgraddiagrams" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

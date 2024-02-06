@@ -1,0 +1,84 @@
+﻿<Window x:Class="HealthCare.AdaugaMedicament"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HealthCare"
+        mc:Ignorable="d"
+        Title="AdaugaMedicament" Height="450" Width="800">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush Stretch="Fill" ImageSource="C:\Users\Daria\OneDrive\Desktop\HealthCareFinal\HealthCareDaria\HealthCare\HealthCare\pozici\bckgr.png"/>
+        </Grid.Background>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="200"/>
+        </Grid.ColumnDefinitions>
+
+        <Image Grid.Column="0" Stretch="Fill" Source="C:\Users\Daria\OneDrive\Desktop\HealthCareFinal\HealthCareDaria\HealthCare\HealthCare\pozici\imagGrid.jpg"></Image>
+        <Image Grid.Column="2" Stretch="Fill" Source="C:\Users\Daria\OneDrive\Desktop\HealthCareFinal\HealthCareDaria\HealthCare\HealthCare\pozici\imagGrid.jpg"></Image>
+
+        <StackPanel Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,60,0,0" Width="300">
+            <ComboBox Name="Medicament" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top" Width="280" Height="38"/>
+            <DatePicker Name="Data_incepere" HorizontalAlignment="Center" Margin="0,25,0,0" VerticalAlignment="Center" Height="50" Width="180"/>
+            <DatePicker Name="Data_incheiere" HorizontalAlignment="Center" Margin="0,25,0,0" VerticalAlignment="Top" Height="50" Width="180"/>
+            <Button Content="Adauga" HorizontalAlignment="Center" Height="35" Margin="0,25,0,0" VerticalAlignment="Top" Width="120"
+        FontSize="16" FontWeight="Bold" Background="#FF007ACC" Foreground="White"
+        Padding="15,5" BorderThickness="1" BorderBrush="#FF90E0E6" Click="Button_Click_1">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" 
+                    BorderThickness="{TemplateBinding BorderThickness}" 
+                    BorderBrush="{TemplateBinding BorderBrush}" 
+                    CornerRadius="10">
+                            <ContentPresenter HorizontalAlignment="Center" 
+                                  VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FFC0E0FF"/>
+                                <Setter Property="BorderBrush" Value="#FFC0E0FF"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#FFAEC0E6"/>
+                                <Setter Property="BorderBrush" Value="#FFAEC0E6"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+            <Button Content="Inapoi" HorizontalAlignment="Center" Margin="0,25,0,0" VerticalAlignment="Top"
+        FontSize="16" FontWeight="Bold" Background="#FF007ACC" Foreground="White" Width="70" Height="25"
+        Padding="15,5" BorderThickness="1" BorderBrush="#FF90E0E6" Click="Button_Click">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" 
+                    BorderThickness="{TemplateBinding BorderThickness}" 
+                    BorderBrush="{TemplateBinding BorderBrush}" 
+                    CornerRadius="10">
+                            <ContentPresenter HorizontalAlignment="Center" 
+                                  VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FFC0E0FF"/>
+                                <Setter Property="BorderBrush" Value="#FFC0E0FF"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#FFAEC0E6"/>
+                                <Setter Property="BorderBrush" Value="#FFAEC0E6"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+        </StackPanel>
+        <Label Grid.Column="1" Content="Selectati data incepere:" HorizontalAlignment="Center" Margin="0,95,0,0" VerticalAlignment="Top" Width="149" RenderTransformOrigin="-0.238,0.704"/>
+        <Label Grid.Column="1" Content="Selectati data incheiere:" HorizontalAlignment="Center" Margin="0,168,0,0" VerticalAlignment="Top" Width="149" RenderTransformOrigin="-0.238,0.704"/>
+        <Label Grid.Column="1" Content="Selectati medicament:" HorizontalAlignment="Center" Margin="0,29,0,0" VerticalAlignment="Top" Width="149" RenderTransformOrigin="-0.238,0.704"/>
+    </Grid>
+</Window>

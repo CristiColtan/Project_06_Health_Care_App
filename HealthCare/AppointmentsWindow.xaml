@@ -1,0 +1,67 @@
+﻿<Window x:Class="HealthCare.AppointmentsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HealthCare"
+        mc:Ignorable="d"
+        Title="AppointmentsWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="C:\Users\Daria\OneDrive\Desktop\HealthCareFinal\HealthCareDaria\HealthCare\HealthCare\pozici\bckgr.png"/>
+        </Grid.Background>
+        <DataGrid Name="Programari_viitoare" Height="329" VerticalAlignment="Top" Margin="30,36,283,0"/>
+        <Button Content="Inapoi" HorizontalAlignment="Left" Margin="638,189,0,0" VerticalAlignment="Top"
+        Height="30" Width="70" FontSize="16" FontWeight="Bold" Background="#FF007ACC" Foreground="White"
+        Padding="15,5" BorderThickness="1" BorderBrush="#FF90E0E6" Click="Button_Click">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}" 
+                    BorderThickness="{TemplateBinding BorderThickness}" 
+                    BorderBrush="{TemplateBinding BorderBrush}" 
+                    CornerRadius="10">
+                        <ContentPresenter HorizontalAlignment="Center" 
+                                  VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#FFC0E0FF"/>
+                            <Setter Property="BorderBrush" Value="#FFC0E0FF"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="#FFAEC0E6"/>
+                            <Setter Property="BorderBrush" Value="#FFAEC0E6"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
+        <Button Content="Anuleaza programare" HorizontalAlignment="Left" Margin="596,100,0,0" VerticalAlignment="Top"
+        Height="57" Width="150" FontSize="14" FontWeight="Bold" Background="#FF007ACC" Foreground="White"
+        Padding="15,5" BorderThickness="1" BorderBrush="#FF90E0E6" Click="Button_Click_1">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}" 
+                    BorderThickness="{TemplateBinding BorderThickness}" 
+                    BorderBrush="{TemplateBinding BorderBrush}" 
+                    CornerRadius="10">
+                        <ContentPresenter HorizontalAlignment="Center" 
+                                  VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#FFC0E0FF"/>
+                            <Setter Property="BorderBrush" Value="#FFC0E0FF"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="#FFAEC0E6"/>
+                            <Setter Property="BorderBrush" Value="#FFAEC0E6"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
+    </Grid>
+</Window>

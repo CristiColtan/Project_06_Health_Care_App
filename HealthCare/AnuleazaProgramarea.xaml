@@ -1,0 +1,80 @@
+﻿<Window x:Class="HealthCare.AnuleazaProgramarea"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HealthCare"
+        mc:Ignorable="d"
+        Title="AnuleazaProgramarea" Height="450" Width="800">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush Stretch="Fill" ImageSource="C:\Users\Daria\OneDrive\Desktop\HealthCareFinal\HealthCareDaria\HealthCare\HealthCare\pozici\bckgr.png"/>
+        </Grid.Background>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="200"/>
+        </Grid.ColumnDefinitions>
+
+        <Image Grid.Column="0" Stretch="Fill" Source="C:\Users\Daria\OneDrive\Desktop\HealthCareFinal\HealthCareDaria\HealthCare\HealthCare\pozici\imagGrid.jpg"></Image>
+        <Image Grid.Column="2" Stretch="Fill" Source="C:\Users\Daria\OneDrive\Desktop\HealthCareFinal\HealthCareDaria\HealthCare\HealthCare\pozici\imagGrid.jpg"></Image>
+
+        <StackPanel Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,80,0,0" Width="370">
+            <ComboBox Name="Programari" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top" Width="360" Height="44"/>
+            <Button Content="Anuleaza" HorizontalAlignment="Center" Margin="0,50,0,0" VerticalAlignment="Top" Height="40" Width="150"
+        FontSize="16" FontWeight="Bold" Background="#FF007ACC" Foreground="White"
+        Padding="15,5" BorderThickness="1" BorderBrush="#FF90E0E6" Click="Button_Click_1">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" 
+                    BorderThickness="{TemplateBinding BorderThickness}" 
+                    BorderBrush="{TemplateBinding BorderBrush}" 
+                    CornerRadius="10">
+                            <ContentPresenter HorizontalAlignment="Center" 
+                                  VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FFC0E0FF"/>
+                                <Setter Property="BorderBrush" Value="#FFC0E0FF"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#FFAEC0E6"/>
+                                <Setter Property="BorderBrush" Value="#FFAEC0E6"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+            <Button Content="Inapoi" HorizontalAlignment="Center" Margin="0,40,0,0" VerticalAlignment="Top"
+        FontSize="16" FontWeight="Bold" Background="#FF007ACC" Foreground="White" Width="70" Height="25"
+        Padding="15,5" BorderThickness="1" BorderBrush="#FF90E0E6" Click="Button_Click">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" 
+                    BorderThickness="{TemplateBinding BorderThickness}" 
+                    BorderBrush="{TemplateBinding BorderBrush}" 
+                    CornerRadius="10">
+                            <ContentPresenter HorizontalAlignment="Center" 
+                                  VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FFC0E0FF"/>
+                                <Setter Property="BorderBrush" Value="#FFC0E0FF"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#FFAEC0E6"/>
+                                <Setter Property="BorderBrush" Value="#FFAEC0E6"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+        </StackPanel>
+        
+    </Grid>
+</Window>

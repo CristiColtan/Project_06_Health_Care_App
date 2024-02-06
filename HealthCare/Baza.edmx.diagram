@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a25b6d2195bc49bd9cb693147dae89df" Name="Diagram1">
+        <EntityTypeShape EntityType="HealthCareModel.Analize" Width="1.5" PointX="0.75" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HealthCareModel.Analize_pacienti" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="HealthCareModel.Diagnostice" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HealthCareModel.Diagnostice_pacienti" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="HealthCareModel.Disponibilitati" Width="1.5" PointX="3" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="HealthCareModel.Medicamente" Width="1.5" PointX="3.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HealthCareModel.Medicamente_pacienti" Width="1.5" PointX="6" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HealthCareModel.Medici" Width="1.5" PointX="3" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HealthCareModel.Programari" Width="1.5" PointX="3" PointY="20.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HealthCareModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HealthCareModel.Utilizatori" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
+        <AssociationConnector Association="HealthCareModel.FK__Analize_p__Anali__6383C8BA" ManuallyRouted="false" />
+        <AssociationConnector Association="HealthCareModel.FK__Analize_p__Pacie__628FA481" ManuallyRouted="false" />
+        <AssociationConnector Association="HealthCareModel.FK__Diagnosti__Diagn__6B24EA82" ManuallyRouted="false" />
+        <AssociationConnector Association="HealthCareModel.FK__Diagnosti__Pacie__6A30C649" ManuallyRouted="false" />
+        <AssociationConnector Association="HealthCareModel.FK__Disponibi__Docto__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="HealthCareModel.FK__Medicamen__Medic__6754599E" ManuallyRouted="false" />
+        <AssociationConnector Association="HealthCareModel.FK__Medicamen__Pacie__66603565" ManuallyRouted="false" />
+        <AssociationConnector Association="HealthCareModel.FK__Medici__UserID__02FC7413" ManuallyRouted="false" />
+        <AssociationConnector Association="HealthCareModel.FK__Programar__Medic__6E01572D" ManuallyRouted="false" />
+        <AssociationConnector Association="HealthCareModel.FK__Programar__Pacie__6EF57B66" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

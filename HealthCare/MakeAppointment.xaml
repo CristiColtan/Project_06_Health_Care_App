@@ -1,0 +1,48 @@
+﻿<Window x:Class="HealthCare.MakeAppointment"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HealthCare"
+        mc:Ignorable="d"
+        Title="MakeAppointment" Height="450" Width="800">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush Stretch="Fill" ImageSource="C:\Users\Daria\OneDrive\Desktop\HealthCareFinal\HealthCareDaria\HealthCare\HealthCare\pozici\bckgr.png"/>
+        </Grid.Background>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="200"/>
+        </Grid.ColumnDefinitions>
+
+        <Image Grid.Column="0" Stretch="Fill" Source="C:\Users\Daria\OneDrive\Desktop\HealthCareFinal\HealthCareDaria\HealthCare\HealthCare\pozici\imagGrid.jpg"/>
+        <Image Grid.Column="2" Stretch="Fill" Source="C:\Users\Daria\OneDrive\Desktop\HealthCareFinal\HealthCareDaria\HealthCare\HealthCare\pozici\imagGrid.jpg"/>
+
+        <StackPanel Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,70,0,0" Width="289" Height="336">
+            <StackPanel Margin="0,0,0,20">
+                <TextBlock Text="Selectati Specializarea:" FontSize="14" FontWeight="Bold" VerticalAlignment="Center" TextAlignment="Center"/>
+                <ComboBox x:Name="Specializari" Width="202" Height="33" SelectionChanged="Specializari_SelectionChanged" RenderTransformOrigin="0.52,1.268"/>
+            </StackPanel>
+
+            <StackPanel Margin="0,20,0,20">
+                <TextBlock Text="Selectati Medicul:" FontSize="14" FontWeight="Bold" VerticalAlignment="Center" TextAlignment="Center"/>
+                <ComboBox Name="Medici_lista" HorizontalAlignment="Center" Width="202" Height="33" SelectionChanged="Medici_lista_SelectionChanged"/>
+            </StackPanel>
+
+            <StackPanel Margin="0,20,0,0">
+                <TextBlock Text="Selectati Data si Ora:" FontSize="14" FontWeight="Bold" VerticalAlignment="Center" TextAlignment="Center"/>
+                <ComboBox x:Name="Data_si_ora" Width="202" Height="33"/>
+            </StackPanel>
+            <Button Content="Adauga" Height="33" Width="147" Click="Button_Click"
+                    FontSize="16" FontWeight="Bold" Background="#FF007ACC" Foreground="White"
+                    Padding="15,5" BorderThickness="1" BorderBrush="#FF90E0E6" Margin="0,10,0,0">
+                <!-- Button style template here -->
+            </Button>
+            <Button Content="Inapoi" Click="Button_Click_1" FontSize="16" FontWeight="Bold" Background="#FF007ACC" Foreground="White" Width="100" Height="43" Padding="15,5" BorderThickness="1" BorderBrush="#FF90E0E6" Margin="0,10,0,0">
+                <!-- Button style template here -->
+            </Button>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,103 @@
+﻿<Window x:Class="HealthCare.LogInWindowxaml"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HealthCare"
+        xmlns:UserControls="clr-namespace:HealthCare.View.UserControls"
+        mc:Ignorable="d"
+        Title="LogInWindowxaml" Height="450" Width="800">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush Stretch="Fill" ImageSource="C:\Users\Daria\OneDrive\Desktop\HealthCareFinal\HealthCareDaria\HealthCare\HealthCare\pozici\bckgr.png"/>
+        </Grid.Background>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition/>
+            <ColumnDefinition Width="200"/>
+        </Grid.ColumnDefinitions>
+
+        <Image Grid.Column="0" Stretch="Fill" Source="C:\Users\Daria\OneDrive\Desktop\HealthCareFinal\HealthCareDaria\HealthCare\HealthCare\pozici\imagGrid.jpg" />
+        <Image Grid.Column="2" Stretch="Fill" Source="C:\Users\Daria\OneDrive\Desktop\HealthCareFinal\HealthCareDaria\HealthCare\HealthCare\pozici\imagGrid.jpg" />
+
+
+        <StackPanel Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,100,0,0"
+                    Width="250">
+            <UserControls:ClearableTextBox x:Name="Username_login" Placeholder="Username" Margin="0,15,0,0"/>
+            <UserControls:ClearableTextBox x:Name="Parola_login" Placeholder="Parola" Margin="0,15,0,0"/>
+            <Button Content="Log In" HorizontalAlignment="Left" Margin="65,30,0,0" VerticalAlignment="Top" Height="42" Width="124" Click="Button_Click">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="#FF007ACC"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="Padding" Value="15,5"/>
+                        <Setter Property="BorderThickness" Value="1"/>
+                        <Setter Property="BorderBrush" Value="#FF90E0E6"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}" 
+                        BorderThickness="{TemplateBinding BorderThickness}" 
+                        BorderBrush="{TemplateBinding BorderBrush}" 
+                        CornerRadius="10">
+                                        <ContentPresenter HorizontalAlignment="Center" 
+                                      VerticalAlignment="Center"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#FFC0E0FF"/>
+                                            <Setter Property="BorderBrush" Value="#FFC0E0FF"/>
+                                        </Trigger>
+                                        <Trigger Property="IsPressed" Value="True">
+                                            <Setter Property="Background" Value="#FFAEC0E6"/>
+                                            <Setter Property="BorderBrush" Value="#FFAEC0E6"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+            <Button Width="80" Height="25" Content="Inapoi" HorizontalAlignment="Left" Margin="85,30,0,0" VerticalAlignment="Top" Click="Button_Click_1">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="#FF007ACC"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="Padding" Value="15,5"/>
+                        <Setter Property="BorderThickness" Value="1"/>
+                        <Setter Property="BorderBrush" Value="#FF90E0E6"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}" 
+                        BorderThickness="{TemplateBinding BorderThickness}" 
+                        BorderBrush="{TemplateBinding BorderBrush}" 
+                        CornerRadius="10">
+                                        <ContentPresenter HorizontalAlignment="Center" 
+                                      VerticalAlignment="Center"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#FFC0E0FF"/>
+                                            <Setter Property="BorderBrush" Value="#FFC0E0FF"/>
+                                        </Trigger>
+                                        <Trigger Property="IsPressed" Value="True">
+                                            <Setter Property="Background" Value="#FFAEC0E6"/>
+                                            <Setter Property="BorderBrush" Value="#FFAEC0E6"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+        </StackPanel>
+        
+
+    </Grid>
+</Window>
