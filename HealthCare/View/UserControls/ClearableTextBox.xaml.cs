@@ -17,9 +17,6 @@ using System.Windows.Shapes;
 
 namespace HealthCare.View.UserControls
 {
-    /// <summary>
-    /// Interaction logic for ClearableTextBox.xaml
-    /// </summary>
     public partial class ClearableTextBox : UserControl, INotifyPropertyChanged
     {
         public ClearableTextBox()
@@ -37,9 +34,6 @@ namespace HealthCare.View.UserControls
             set
             {
                 placeholder = value;
-                //do not!
-                //tbPlaceholder.Text = placeholder;
-                //PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Username"));
                 OnPropertyChanged();
             }
         }
